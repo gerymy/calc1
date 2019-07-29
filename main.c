@@ -18,23 +18,23 @@ int main()
 	void (*orig_clear)();
 	void (*orig_math)(float *,float *, float *,float *,float *, float *);
 	
-	ld1=dlopen("./lib/libvvod.so", RTLD_NOW);
+	ld1=dlopen("./lib/libvvod.so", RTLD_NOW);//загрузка библиотеки для ввода
 	orig_vvod=dlsym(ld1,"vvodi");
 	orig_clear=dlsym(ld1,"clear");
 	printf("Hello, ");
 	 do
 	 {	printf("type exspression: \n");
-		orig_vvod(&real1, &compx1);
-		orig_clear();
-		printf("vvedite znak:");
-		fgets(znak_str,2,stdin);
+		orig_vvod(&real1, &compx1);// ввод первого числа
+		orig_clear();//очистка  буффера после сканф
+		printf("vvedite znak(+,-,*,/):");
+		fgets(znak_str,2,stdin);//ввод знака
 		if(strcmp(znak_str,"+")==0)znak=1;
 		if(strcmp(znak_str,"-")==0)znak=2;
 		if(strcmp(znak_str,"*")==0)znak=3;			
 		if(strcmp(znak_str,"/")==0)znak=4;
-		orig_vvod(&real2, &compx2);
+		orig_vvod(&real2, &compx2);//ввод второго числа
 		orig_clear();
-		switch(znak)
+		switch(znak)//выбор и вызов функций
 		{
 			case 1:
 				ld2=dlopen("./lib/libplus.so", RTLD_NOW);
@@ -57,10 +57,10 @@ int main()
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 		}
-		printf("Rezult: %.2f + %.2fi", real3, compx3);
-		orig_clear();
+		printf("Rezult: %.2f + %.2fi", real3, compx3);//вывод результата
+		orig_clear();//очистка буффера
 		printf("Continue? y/n\n");
-		fgets(quite_str,2,stdin);
+		fgets(quite_str,2,stdin);//выход
 		quite=strcmp(quite_str,"y");
 		dlclose(ld2);
 	} while (quite==0);
