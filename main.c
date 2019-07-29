@@ -18,7 +18,7 @@ int main()
 	void (*orig_clear)();
 	void (*orig_math)(float *,float *, float *,float *,float *, float *);
 	
-	ld1=dlopen("./libvvod.so", RTLD_NOW);
+	ld1=dlopen("./lib/libvvod.so", RTLD_NOW);
 	orig_vvod=dlsym(ld1,"vvodi");
 	orig_clear=dlsym(ld1,"clear");
 	printf("Hello, ");
@@ -37,22 +37,22 @@ int main()
 		switch(znak)
 		{
 			case 1:
-				ld2=dlopen("./libsumm.so", RTLD_NOW);
+				ld2=dlopen("./lib/libsumm.so", RTLD_NOW);
 				orig_math=dlsym(ld2,"summ");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 2:
-				ld2=dlopen("./libdedu.so", RTLD_NOW);
+				ld2=dlopen("./lib/libdedu.so", RTLD_NOW);
 				orig_math=dlsym(ld2,"dedu");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 3:
-				ld2=dlopen("./libmulti.so", RTLD_NOW);
+				ld2=dlopen("./lib/libmulti.so", RTLD_NOW);
 				orig_math=dlsym(ld2,"multi");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 4:
-				ld2=dlopen("./libdiv.so", RTLD_NOW);
+				ld2=dlopen("./lib/libdiv.so", RTLD_NOW);
 				orig_math=dlsym(ld2,"dive");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
