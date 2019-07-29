@@ -9,7 +9,7 @@ int main()
 	int znak;
 	char quite_str[2];
 	int quite=1;
-    float real1=0, compx1=0;
+        float real1=0, compx1=0;
 	float real2=0, compx2=0;
 	float real3=0, compx3=0;
 	void *ld1;
@@ -37,23 +37,23 @@ int main()
 		switch(znak)
 		{
 			case 1:
-				ld2=dlopen("./lib/libsumm.so", RTLD_NOW);
-				orig_math=dlsym(ld2,"summ");
+				ld2=dlopen("./lib/libplus.so", RTLD_NOW);
+				orig_math=dlsym(ld2,"plus");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 2:
-				ld2=dlopen("./lib/libdedu.so", RTLD_NOW);
-				orig_math=dlsym(ld2,"dedu");
+				ld2=dlopen("./lib/libminus.so", RTLD_NOW);
+				orig_math=dlsym(ld2,"minus");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 3:
-				ld2=dlopen("./lib/libmulti.so", RTLD_NOW);
-				orig_math=dlsym(ld2,"multi");
+				ld2=dlopen("./lib/libumnojaem.so", RTLD_NOW);
+				orig_math=dlsym(ld2,"umnojaem");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 			case 4:
-				ld2=dlopen("./lib/libdiv.so", RTLD_NOW);
-				orig_math=dlsym(ld2,"dive");
+				ld2=dlopen("./lib/libdelim.so", RTLD_NOW);
+				orig_math=dlsym(ld2,"delim");
 				orig_math(&real1, &compx1, &real2, &compx2, &real3, &compx3);
 				break;
 		}
